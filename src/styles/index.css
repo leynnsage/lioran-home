@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Paper grain noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Smooth scrollbar hide */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Staggered animation delays */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.1s; }
+.stagger-3 { animation-delay: 0.18s; }
+.stagger-4 { animation-delay: 0.26s; }
+.stagger-5 { animation-delay: 0.34s; }
+
+/* Markdown content styles */
+.markdown-content {
+  @apply text-sm text-ink;
+}
+
+.markdown-content .inline-code {
+  @apply bg-paper-200 px-1 py-0.5 rounded text-xs font-mono;
+}
+
+.markdown-content .code-block {
+  @apply mt-2 rounded-lg bg-paper-50 shadow-neu-inset overflow-hidden;
+}
+
+.markdown-content .code-header {
+  @apply flex items-center justify-between px-3 py-1.5 bg-paper-200/50;
+}
+
+.markdown-content .code-lang {
+  @apply text-[10px] text-ink-muted;
+}
+
+.markdown-content .code-copy {
+  @apply text-[10px] text-accent hover:text-accent-warm transition-colors cursor-pointer;
+}
+
+.markdown-content pre {
+  @apply px-3 py-2 overflow-x-auto;
+}
+
+.markdown-content code {
+  @apply text-xs text-ink font-mono;
+}
